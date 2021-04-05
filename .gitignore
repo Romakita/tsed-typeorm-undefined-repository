@@ -22,6 +22,7 @@ coverage
 /public/static/styles
 /public/uploads
 /tmp/
+/data/
 
 # dist (for GROWI v4.x and below)
 /public/*.chunk.js

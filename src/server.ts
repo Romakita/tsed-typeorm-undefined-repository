@@ -1,11 +1,36 @@
-import {Configuration, Inject, PlatformApplication} from "@tsed/common";
+import {Configuration, Inject, InjectorService, PlatformApplication} from "@tsed/common";
 import * as bodyParser from "body-parser";
+
+import { TypeORMService } from '@tsed/typeorm';
+import { ConnectionOptions } from "typeorm";
 
 const rootDir = __dirname;
 
+
+const connectionOptions: ConnectionOptions = {
+  name: 'default',
+  type: 'sqlite',
+  database: './data/sqlite.db',
+  synchronize: true,
+} as ConnectionOptions;
+
+
 @Configuration({
   rootDir,
-  acceptMimes: ["application/json"]
+  acceptMimes: ["application/json"],
+  mount: {
+    '/': [
+      `${rootDir}/controllers/*.ts`,
+    ],
+  },
+  typeorm: [
+    {
+      ...connectionOptions,
+      entities: [
+        `${rootDir}/entities/*{.ts,.js}`,
+      ],
+    } as ConnectionOptions,
+  ],
 })
 export class Server {
   @Inject()
@@ -13,6 +38,9 @@ export class Server {
 
   @Configuration()
   settings: Configuration;
+
+  @Inject()
+  injector: InjectorService;
 
   /**
    * This method let you configure the express middleware required by your application to works.
@@ -25,4 +53,9 @@ export class Server {
         extended: true
       }));
   }
+
+  async $onReady(): Promise<void> {
+    this.injector.get<TypeORMService>(TypeORMService);
+  }
+
 }
