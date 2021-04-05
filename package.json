@@ -1,0 +1,31 @@
+{
+  "name": "tsed-typeorm-undefined-repository",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yuki-takei/tsed-typeorm-undefined-repository",
+  "author": "Yuki Takei <yuki@weseek.co.jp>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development ts-node-dev src/index.ts"
+  },
+  "devDependencies": {
+    "@tsed/common": "^6.38.2",
+    "@tsed/core": "^6.38.2",
+    "@tsed/di": "^6.38.2",
+    "@tsed/exceptions": "^6.38.2",
+    "@tsed/json-mapper": "^6.38.2",
+    "@tsed/platform-express": "^6.38.2",
+    "@tsed/schema": "^6.38.2",
+    "@tsed/typeorm": "^6.38.2",
+    "@types/express": "^4.17.11",
+    "@types/multer": "^1.4.5",
+    "@types/node": "^14.14.37",
+    "cross-env": "^7.0.3",
+    "express": "4",
+    "sqlite3": "^5.0.2",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "typeorm": "^0.2.32",
+    "typescript": "^4.2.3"
+  }
+}
