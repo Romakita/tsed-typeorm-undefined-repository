@@ -56,5 +56,4 @@ export class Server {
   async $onReady(): Promise<void> {
     this.injector.get<TypeORMService>(TypeORMService);
   }
-
 }
